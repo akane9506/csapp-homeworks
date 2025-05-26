@@ -4,7 +4,8 @@
 
 int divide_power2(int x, int k) {
     int sign = x >> 31;
-    return (x & ~sign | (x + (1 << k) - 1) & sign) >> k;
+    int bias = ((1 << k) - 1) & sign;
+    return (x + bias) >> k;
 }
 
 void test_divide_power2();
